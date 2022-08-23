@@ -6,7 +6,7 @@ import Repository.PautaRepository;
 public class PautaService {
 	public static String CAMPO_TITULO_OBRIGATORIO = "Campo 'Titulo' é obrigatório";
 	
-	public void execute(Pauta pauta){
+	public void execute(Pauta pauta) throws Exception{
 
 		validaRegrasDeNegocio(pauta);
 		PautaRepository.save(pauta);
@@ -14,11 +14,11 @@ public class PautaService {
 		
 	}
 
-	private void validaRegrasDeNegocio(Pauta pauta) {
+	private void validaRegrasDeNegocio(Pauta pauta) throws Exception {
 		if(pauta.getTitulo() == null)
-			throw new ApiException("Campo 'Titulo' é obrigatório");
+			throw new Exception("Campo 'Titulo' é obrigatório");
 		
-			throw new ApiException(CAMPO_TITULO_OBRIGATORIO);
+		
 		
 	}
 
